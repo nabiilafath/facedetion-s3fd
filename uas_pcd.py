@@ -16,13 +16,12 @@ from google.colab import drive
 drive.mount('/content/drive')
 
 def load_s3fd(frozen_graph_filename,  name="", graph=None):
-    # We load the protobuf file from the disk and parse it to retrieve the 
-    # unserialized graph_def
+  
     with tf.io.gfile.GFile(frozen_graph_filename, "rb") as f:
         graph_def = tf.compat.v1.GraphDef()
         graph_def.ParseFromString(f.read())
         
-    # Then, we import the graph_def into a new Graph and returns it 
+    
     if graph is None:
         graph = tf.Graph() 
     with graph.as_default():
@@ -139,6 +138,7 @@ vis = visualize( img, faces, min_score=0.8)
 plt.figure(figsize=(15,15))
 plt.imshow(vis)
 
+#coba gambar kedua
 # loading detector
 detector = s3fd('/content/drive/MyDrive/PCDML/s3fd.pb')
 
